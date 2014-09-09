@@ -4,9 +4,7 @@ var gulp         = require('gulp'),
 var globs = {
     css: 'src/css/**/*.less',
     js: 'src/js/flickrsearch.js',
-    html: 'src/*.{ejs,html}',
-    images: 'src/img/**',
-    misc: 'src/**/*.{ico,eot,woff,ttf,php,xml}'
+    html: 'src/*.{ejs,html}'
 };
 
 gulp.task('css', function() {
@@ -33,13 +31,6 @@ gulp.task('html', function() {
     gulp.src(globs.html)
         .pipe(gulp.dest('static'));
 });
-gulp.task('images', function() {
-    gulp.src(globs.images)
-        .pipe(gulp.dest('static/img'));
-});
-gulp.task('misc', function () {
-    gulp.src(globs.misc).pipe(gulp.dest('static'));
-});
 
 gulp.task('watch', function () {
     for (var key in globs) {
@@ -48,4 +39,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('spy', ['watch']);
-gulp.task('default', ['html', 'js', 'css', 'images', 'misc']);
+gulp.task('default', ['html', 'js', 'css']);

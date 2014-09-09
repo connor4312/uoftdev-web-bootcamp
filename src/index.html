@@ -5,9 +5,37 @@
 	<title>FlickrSearch</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>Hello World</h1>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<body ng-app="flickrsearch">
+    <div class="container" ng-controller="Controller as main">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Das FlickrSearch</h1>
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-danger" ng-if="main.alert">{{ main.alert }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Search</h3>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="main.query.query" placeholder="Cats">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="main.search()" ng-disabled="loading">Search!</button>
+                    </span>
+                </div>
+                <h3>Favorites (click to remove)</h3>
+                <ul class="favorite-list">
+                    <li ng-repeat="favorite in main.favorites"><img ng-src="{{ favorite.url }}" ng-click="main.unfavorite(favorite)"></li>
+                </ul>
+            </div>
+            <div class="col-md-8" ng-if="main.image">
+                <img ng-src="{{ main.image.url }}">
+                <button class="btn btn-default" ng-click="main.favorite(main.image)">Favorite this!</button>
+            </div>
+        </div>
+    </div>
     <script src="js/flickrsearch.js"></script>
 </body>
 </html>

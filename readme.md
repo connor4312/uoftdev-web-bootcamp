@@ -4,6 +4,8 @@ In order to build and run this, ensure you have [Node.js (with npm)](http://node
 
 This project uses a basic Express web server and a Gulp build environment. Note that much of the minification I'd normally put in Gulp has removed -- this is based on [gulp-breakout](https://github.com/connor4312/gulp-breakout). No reason to eat 200 mb of disk space for stuff that isn't needed :)
 
+Not a ton of work was put into the design. Sorry. If you want to see nice design, check out [this site](http://mcprohosting.com/).
+
 ### Usage:
 
  1. cd into the project folder
