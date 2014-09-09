@@ -1,0 +1,10 @@
+{
+    "http": {
+        "port": 3000,
+        "host": "127.0.0.1"
+    },
+    "flickr": {
+        "api_key": "f7b77308c167f846113bd34efb9ee783",
+        "secret": "8a8e573b6fd1b6db"
+    }
+}
