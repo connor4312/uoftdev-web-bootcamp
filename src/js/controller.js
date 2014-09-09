@@ -23,6 +23,10 @@ function Controller ($http) {
         });
 
     function search () {
+        /**
+         * Runs a search for the current query to the API, and updates the
+         * viewmodel appropriate upon return.
+         */
         vm.loading = true;
 
         $http
@@ -32,10 +36,17 @@ function Controller ($http) {
             })
             .error(function (err) {
                 vm.alert = err;
+            })
+            .always(function () {
+                vm.loading = false;
             });
     }
 
     function favorite (image) {
+        /**
+         * "Favorites" a given image. An alert is shown if the image is
+         * already on our list of favorites.
+         */
         if (_.find(vm.favorites, {id: image.id})) {
             vm.alert = 'You already favorited this!';
             return;
@@ -51,6 +62,9 @@ function Controller ($http) {
     }
 
     function unfavorite (image) {
+        /**
+         * Removes an image from the list of favorites.
+         */
         vm.favorites = _.reject(vm.favorites, {id: image.id});
 
         $http

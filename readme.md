@@ -12,3 +12,13 @@ Not a ton of work was put into the design. Sorry. If you want to see nice design
  2. Only once: run `npm install && bower install && gulp`.
  3. Copy `config.example.js` to `config.js`, and change details as desired.
  3. Run `npm start` to boot the server. By default it is accessible on http://localhost:3000.
+
+
+### API
+
+Favorites are persisted in memory, per server instance. When the server is restarted, favorites are lost. Endpoints:
+
+ * `GET /search?query=cats` Returns a random image object for the query, containing data like `{favorite: boolean, id: integer, url: string, query: string}`.
+ * `GET /favorites` Returns a list of favorited image objects.
+ * `POST /favorites` Add a favorite. Expects the `id` and `query` of the image to be given in the POST body or as GET params.
+ * `DELETE /favorites` Removes a favorite. Expects the `id` and `query` of the image to be given in the POST body or as GET params.
